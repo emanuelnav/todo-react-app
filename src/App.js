@@ -5,19 +5,33 @@ import { ToDoCounter } from './components/ToDoCounter';
 import { ToDoItem } from './components/ToDoItem';
 import { ToDoList } from './components/ToDoList';
 import { ToDoSearch } from './components/ToDoSearch';
+import { Modal } from './components/Modal';
 
-function App() {
-  const localStoreTasks = localStorage.getItem('TASKSLIST_V1');
+function useLocalStorage(itemName) {
+  const localStoreTasks = localStorage.getItem(itemName);
   let parsedTasks;
   if (!localStoreTasks) {
-    localStorage.setItem('TASKSLIST_V1', JSON.stringify([]))
+    localStorage.setItem(itemName, JSON.stringify([]))
     parsedTasks = [];
   } else {
     parsedTasks = JSON.parse(localStoreTasks);
   }
 
-  const [searchValue, setSearchValue] = React.useState('');
   const [tasksList, setTasksList] = React.useState(parsedTasks);
+
+  const saveTasksList = (tasksList) => {
+    localStorage.setItem(itemName, JSON.stringify(tasksList))
+    setTasksList(tasksList)
+  };
+
+  return [tasksList, saveTasksList];
+
+};
+
+function App() {
+
+  const [searchValue, setSearchValue] = React.useState('');
+  const [tasksList, saveTasksList] = useLocalStorage('TASKSLIST_V1');
   const completedTasks = tasksList.filter(task => task.completed).length;
   const totalTasks = tasksList.length;
 
@@ -32,11 +46,6 @@ function App() {
       return taskName.includes(filter);
     });
   }
-
-  const saveTasksList = (tasksList) => {
-    localStorage.setItem('TASKSLIST_V1', JSON.stringify(tasksList))
-    setTasksList(tasksList)
-  };
 
   const toggleCompleteTask = (name) => {
     const taskIndex = tasksList.findIndex(task => task.name === name);
@@ -65,6 +74,11 @@ function App() {
                     onDelete={() => deleteTask(task.name)}/>
         )}
       </ToDoList>
+
+      <Modal>
+        <p>BUENAS</p>
+      </Modal>
+
       <CreateToDoButton/>
     </React.Fragment>
   );
