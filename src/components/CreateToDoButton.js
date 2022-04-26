@@ -3,7 +3,9 @@ import '../css/CreateToDoButton.css'
 
 function CreateToDoButton() {
     return (
-        <button className="CreateTodoButton">+</button>
+        <button className="createTodoButton">
+            <i className="bi bi-plus-lg"></i>
+        </button>
     );
 }
 

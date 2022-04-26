@@ -2,19 +2,12 @@ import React from 'react'
 import '../css/ToDoItem.css'
 
 function ToDoItem(props) {
-    const onComplete = () => {
-        console.log(props.title);
-      };
-      const onDelete = () => {
-        alert('Borraste el todo ' + props.title);
-      };
-
     return (
       <li className="TodoItem">
         <button type="button"
-                className={`Icon Icon-check btn ${props.completed && 'Icon-check--active'}`}
-                onClick={onComplete}>
-          <i className="bi bi-check-square"></i>
+                className={`Icon btn ${props.completed && 'Icon-check--active'}`}
+                onClick={props.onComplete}>
+          <i className={`bi ${props.completed ? 'bi-check-square' : 'bi-square'}`}></i>
         </button>
 
         <p className={`TodoItem-p ${props.completed && 'TodoItem-p--complete'}`}>
@@ -23,8 +16,8 @@ function ToDoItem(props) {
 
       <span
         className="Icon Icon-delete"
-        onClick={onDelete}>
-        X
+        onClick={props.onDelete}>
+        <i className="bi bi-trash3"></i>
       </span>
     </li>
     );
