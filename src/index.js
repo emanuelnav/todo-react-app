@@ -4,8 +4,11 @@ import './index.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import "bootstrap-icons/font/bootstrap-icons.css"
 import App from './App';
+import { ToDoProvider } from './js/ToDoContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <App />
+  <ToDoProvider>
+    <App />
+  </ToDoProvider>
 );
