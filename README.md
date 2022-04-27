@@ -2,6 +2,8 @@
 
 A simple task manager made with ReactJS.
 
+See the [Demo](https://emanuelnav.github.io/todo-react-app/ "Demo")
+
 ## Project setup
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). To setup the project you need to clone the repository , install the dependecies using the next command:
