@@ -26,22 +26,23 @@ function ToDoForm() {
             <textarea
             value = {nameValue}
             onChange = {onChange}
-            placeholder = "Insert a new task..."/>
+            placeholder = "Insert a new task..."
+            required/>
 
-            <div className="TodoForm-buttonContainer">
+            <div className="todoForm-buttonContainer">
                 <button
                     type="button"
-                    className="TodoForm-button TodoForm-button-cancel"
+                    className="todoForm-button todoForm-button-cancel"
                     onClick = {onCancel}
                 >
-                    <i class="bi bi-x-circle"></i>
+                    <i class="bi bi-x-lg"></i>
                 </button>
 
                 <button
-                    className="TodoForm-button TodoForm-button-add"
+                    className="todoForm-button todoForm-button-add"
                     type= "submit"
                 >
-                    <i class="bi bi-plus-circle"></i>
+                    <i class="bi bi-plus-lg"></i>
                 </button>
             </div>
         </form>

@@ -5,7 +5,7 @@ import '../css/Modal.css';
 function Modal({ children }) {
     return (
         ReactDOM.createPortal(
-            <div className="ModalBackground">
+            <div className="modalBackground">
                 {children}
             </div>,
             document.getElementById('modal')

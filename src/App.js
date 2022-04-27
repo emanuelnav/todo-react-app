@@ -1,4 +1,3 @@
-// import './App.css';
 import React from 'react'
 import { CreateToDoButton } from './components/CreateToDoButton';
 import { ToDoCounter } from './components/ToDoCounter';
@@ -7,6 +6,7 @@ import { ToDoList } from './components/ToDoList';
 import { ToDoSearch } from './components/ToDoSearch';
 import { Modal } from './components/Modal';
 import { ToDoForm } from './components/ToDoForm';
+import { Footer } from './components/Footer';
 import { ToDoContext } from './js/ToDoContext';
 
 function App() {
@@ -36,8 +36,8 @@ function App() {
           <ToDoForm/>
         </Modal>
       )}
-
       <CreateToDoButton/>
+      <Footer/>
     </React.Fragment>
   );
 }
