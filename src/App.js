@@ -1,4 +1,5 @@
 import React from 'react'
+import { useTodos } from './js/useTodos';
 import { CreateToDoButton } from './components/CreateToDoButton';
 import { ToDoCounter } from './components/ToDoCounter';
 import { ToDoItem } from './components/ToDoItem';
@@ -7,20 +8,28 @@ import { ToDoSearch } from './components/ToDoSearch';
 import { Modal } from './components/Modal';
 import { ToDoForm } from './components/ToDoForm';
 import { Footer } from './components/Footer';
-import { ToDoContext } from './js/ToDoContext';
 
 function App() {
+
   const {
+    searchValue,
+    setSearchValue,
+    openModal,
+    setOpenModal,
+    completedTasks,
+    totalTasks,
     tasksFiltered,
     toggleCompleteTask,
     deleteTask,
-    openModal,
-  } = React.useContext(ToDoContext);
+    addTask
+  } = useTodos();
 
   return (
     <React.Fragment>
-      <ToDoCounter/>
-      <ToDoSearch/>
+      <ToDoCounter completedTasks={completedTasks}
+                   totalTasks={totalTasks}/>
+      <ToDoSearch searchValue={searchValue}
+                  setSearchValue={setSearchValue}/>
         <ToDoList>
           { tasksFiltered.map(task =>
             <ToDoItem key={task.name}
@@ -33,10 +42,11 @@ function App() {
 
       {openModal && (
         <Modal>
-          <ToDoForm/>
+          <ToDoForm setOpenModal={() => setOpenModal()}
+                    addTask={addTask}/>
         </Modal>
       )}
-      <CreateToDoButton/>
+      <CreateToDoButton setOpenModal={setOpenModal}/>
       <Footer/>
     </React.Fragment>
   );

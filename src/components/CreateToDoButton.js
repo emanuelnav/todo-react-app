@@ -1,9 +1,7 @@
 import React from 'react'
 import '../css/CreateToDoButton.css'
-import { ToDoContext } from '../js/ToDoContext';
 
-function CreateToDoButton() {
-    const {setOpenModal} = React.useContext(ToDoContext);
+function CreateToDoButton({setOpenModal}) {
 
     const openModal = () => {
         setOpenModal(true);

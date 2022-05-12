@@ -1,9 +1,7 @@
 import React from 'react';
 import { useLocalStorage } from './useLocalStorage';
 
-const ToDoContext = React.createContext();
-
-function ToDoProvider(props) {
+function useTodos() {
     const [searchValue, setSearchValue] = React.useState('');
     const [openModal, setOpenModal] = React.useState(false);
     const [tasksList, saveTasksList] = useLocalStorage('TASKSLIST_V1');
@@ -44,7 +42,7 @@ function ToDoProvider(props) {
     };
 
     return (
-        <ToDoContext.Provider value={{
+        {
             searchValue,
             setSearchValue,
             openModal,
@@ -57,10 +55,8 @@ function ToDoProvider(props) {
             toggleCompleteTask,
             deleteTask,
             addTask
-        }}>
-            {props.children}
-        </ToDoContext.Provider>
+        }
     )
 }
 
-export { ToDoContext, ToDoProvider };
+export { useTodos };

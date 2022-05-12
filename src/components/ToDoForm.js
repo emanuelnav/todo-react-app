@@ -1,10 +1,8 @@
 import React from 'react';
 import '../css/ToDoForm.css';
-import { ToDoContext } from '../js/ToDoContext';
 
-function ToDoForm() {
+function ToDoForm({setOpenModal, addTask}) {
     const [nameValue, setNameValue] = React.useState('');
-    const {setOpenModal, addTask} = React.useContext(ToDoContext);
     const onCancel = () => {
         setOpenModal(false);
     };
@@ -35,14 +33,14 @@ function ToDoForm() {
                     className="todoForm-button todoForm-button-cancel"
                     onClick = {onCancel}
                 >
-                    <i class="bi bi-x-lg"></i>
+                    <i className="bi bi-x-lg"></i>
                 </button>
 
                 <button
                     className="todoForm-button todoForm-button-add"
                     type= "submit"
                 >
-                    <i class="bi bi-plus-lg"></i>
+                    <i className="bi bi-plus-lg"></i>
                 </button>
             </div>
         </form>
