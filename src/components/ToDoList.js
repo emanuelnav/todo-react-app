@@ -5,7 +5,7 @@ function ToDoList(props) {
     return (
         <section>
             <ul>
-                { props.children }
+                {props.tasksFiltered.map(props.render)}
             </ul>
         </section>
     );

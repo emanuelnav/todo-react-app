@@ -26,27 +26,37 @@ function App() {
 
   return (
     <React.Fragment>
-      <ToDoCounter completedTasks={completedTasks}
-                   totalTasks={totalTasks}/>
-      <ToDoSearch searchValue={searchValue}
-                  setSearchValue={setSearchValue}/>
-        <ToDoList>
-          { tasksFiltered.map(task =>
-            <ToDoItem key={task.name}
-                      title={task.name}
-                      completed={task.completed}
-                      onComplete={() => toggleCompleteTask(task.name)}
-                      onDelete={() => deleteTask(task.name)}/>
-          )}
-        </ToDoList>
+      <ToDoCounter
+        completedTasks={completedTasks}
+        totalTasks={totalTasks}/>
+
+      <ToDoSearch
+        searchValue={searchValue}
+        setSearchValue={setSearchValue}/>
+
+      <ToDoList
+        tasksFiltered={tasksFiltered}
+        render={task => (
+          <ToDoItem
+            key={task.name}
+            title={task.name}
+            completed={task.completed}
+            onComplete={() => toggleCompleteTask(task.name)}
+            onDelete={() => deleteTask(task.name)}
+          />
+        )}
+      />
 
       {openModal && (
         <Modal>
-          <ToDoForm setOpenModal={() => setOpenModal()}
-                    addTask={addTask}/>
+          <ToDoForm
+            setOpenModal={() => setOpenModal()}
+            addTask={addTask}/>
         </Modal>
       )}
+
       <CreateToDoButton setOpenModal={setOpenModal}/>
+
       <Footer/>
     </React.Fragment>
   );
